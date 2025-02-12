@@ -2,20 +2,24 @@
 # 🌞 Solar AI Assistant - LLaMA Model Powered Chatbot
 Solar AI Assistant is an advanced AI-powered chatbot designed to provide accurate, real-time insights on solar energy. Powered by the LLaMA model and integrated with Groq API, this chatbot delivers expert-level responses on solar panel technology, installation guidance, cost efficiency, and renewable energy trends.
 
-#🚀 Key Features:
-✅ LLaMA Model-Powered AI – Delivers fast, high-quality answers.
-✅ Solar Energy Expertise – Covers installation, maintenance, savings, and innovations.
-✅ FastAPI Backend & Streamlit Frontend – Ensures a smooth and user-friendly experience.
-✅ Deployed on Render – Access the assistant from anywhere, no local setup required.
-✅ Lightweight & Efficient – No Hugging Face, No Torch, fully optimized for performance.
+## 🚀 Key Features  
 
-# 🔹 Use Case Scenarios:
+- ✅ **LLaMA Model-Powered AI** – Delivers fast, high-quality answers.  
+- ✅ **Solar Energy Expertise** – Covers installation, maintenance, savings, and innovations.  
+- ✅ **FastAPI Backend & Streamlit Frontend** – Ensures a smooth and user-friendly experience.  
+- ✅ **Deployed on Render** – Access the assistant from anywhere, no local setup is required.  
+- ✅ **Lightweight & Efficient** – No Hugging Face, No Torch, fully optimized for performance.  
 
-🏡 Homeowners looking to install solar panels.
-🏢 Businesses exploring renewable energy solutions.
-📚 Students & Researchers seeking expert knowledge on solar energy.
-🌱 Environmental Enthusiasts curious about solar efficiency & sustainability.
-💡 Ask any solar-related question and get instant AI-powered insights! ☀️  
+---
+
+## 🔹 Use Case Scenarios  
+
+🔆 **For Homeowners:** Considering solar panel installation for energy savings.  
+🏢 **For Businesses:** Exploring renewable energy solutions for sustainability.  
+📚 **For Students & Researchers:** Seeking expert knowledge on solar energy.  
+🌱 **For Environmental Enthusiasts:** Curious about solar efficiency & sustainability.  
+💡 **For Anyone:** Ask any solar-related question and get instant AI-powered insights! ☀️  
+ 
 
 ---
 
