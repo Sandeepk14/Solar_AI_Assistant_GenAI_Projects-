@@ -1,5 +1,7 @@
 
 
+
+
 import streamlit as st
 import requests
 import os
@@ -7,7 +9,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-PORT = os.getenv("PORT", "8000")
+API_URL = "http://localhost:7860"  # Use Spaces' internal server
 
 st.title("🌞 Solar Industry AI Assistant")
 
@@ -15,7 +17,7 @@ user_input = st.text_input("Ask something:")
 
 if st.button("Submit"):
     response = requests.post(
-        f"http://localhost:{PORT}/ask",
+        f"{API_URL}/ask",
         json={"user_message": user_input}  # Send as JSON
     )
 
@@ -29,6 +31,3 @@ if st.button("Submit"):
     else:
         st.error(f"❌ API Error: {response.status_code}")
         st.json(response.json())  # Show error details
-
-
-
