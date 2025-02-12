@@ -9,6 +9,13 @@ Solar AI Assistant is an advanced AI-powered chatbot designed to provide accurat
 
 https://solar-ai-assistant-frontend.onrender.com
 
+# Preview1
+![image](https://github.com/user-attachments/assets/b9f29003-4317-490c-a187-075788781135)
+
+# Preview 2 
+
+![image](https://github.com/user-attachments/assets/041fcb5e-2304-4e0d-ae7c-37766e8abfb8)
+
 
 
 
