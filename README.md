@@ -42,5 +42,5 @@ Solar AI Assistant is an advanced AI-powered chatbot designed to provide accurat
 
 ### **🔹 1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/Solar_AI_Assistant_GenAI_Projects-.git
+https://github.com/Sandeepk14/Solar_AI_Assistant_GenAI_Projects-.git
 cd Solar_AI_Assistant_GenAI_Projects-
