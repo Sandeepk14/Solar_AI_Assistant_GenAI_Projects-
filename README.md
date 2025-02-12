@@ -1,6 +1,16 @@
 
 # 🌞 Solar AI Assistant - LLaMA Model Powered Chatbot
+
+
 Solar AI Assistant is an advanced AI-powered chatbot designed to provide accurate, real-time insights on solar energy. Powered by the LLaMA model and integrated with Groq API, this chatbot delivers expert-level responses on solar panel technology, installation guidance, cost efficiency, and renewable energy trends.
+
+
+# DEMO LINK
+
+https://solar-ai-assistant-frontend.onrender.com
+
+
+
 
 ## 🚀 Key Features  
 
