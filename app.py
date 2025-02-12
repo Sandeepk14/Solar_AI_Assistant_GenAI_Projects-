@@ -4,20 +4,15 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-
 # Load environment variables
 load_dotenv()
 
-HF_TOKEN = os.getenv("HF_TOKEN")
-PORT = int(os.getenv("PORT", 7860))  # Hugging Face uses port 7860
-MODEL_NAME = os.getenv("MODEL_NAME", "deepseek-ai/deepseek-llm-7b-chat")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+PORT = int(os.getenv("PORT", 8000))
+MODEL_NAME = os.getenv("MODEL_NAME", "llama3-8b-8192")
 
-# Verify Hugging Face token
-if not HF_TOKEN:
-    raise ValueError("❌ HF_TOKEN is missing! Add it to your Hugging Face Space secrets.")
-
-# Authenticate Hugging Face
-login(HF_TOKEN)
+if not GROQ_API_KEY:
+    raise ValueError("❌ GROQ_API_KEY is missing! Add it to your .env file.")
 
 app = FastAPI()
 
@@ -27,7 +22,7 @@ class QueryRequest(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "🌞 Solar Industry AI Assistant - Use /ask to interact."}
+    return {"message": "🌞 Solar Industry AI Assistant Use /ask to interact."}
 
 # 🔹 Prompt Engineering Function
 def enhance_prompt(user_query: str) -> str:
@@ -57,24 +52,26 @@ def enhance_prompt(user_query: str) -> str:
     
     return prompt_template.strip()
 
-# Function to generate responses via Hugging Face API
-def get_huggingface_response(user_message):
-    enhanced_query = enhance_prompt(user_message)
-
-    headers = {"Authorization": f"Bearer {HF_TOKEN}", "Content-Type": "application/json"}
+# Function to generate responses via Groq API
+def get_chat_response(user_message):
+    enhanced_query = enhance_prompt(user_message)  # Apply prompt engineering
+    
+    headers = {"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"}
     json_data = {
-        "inputs": enhanced_query,
-        "parameters": {"max_length": 500}
+        "model": MODEL_NAME,
+        "messages": [
+            {"role": "system", "content": "You are a helpful AI assistant."},
+            {"role": "user", "content": enhanced_query}
+        ],
+        "temperature": 0.7
     }
 
-    response = requests.post(
-        f"https://api-inference.huggingface.co/models/{MODEL_NAME}",
-        headers=headers,
-        json=json_data
-    )
+    response = requests.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=json_data)
 
     if response.status_code == 200:
-        return response.json()[0]["generated_text"]
+        return response.json()["choices"][0]["message"]["content"]
+    elif response.status_code == 401:
+        return "❌ Error: Unauthorized! Check your Groq API key."
     else:
         return f"❌ Error: {response.status_code} - {response.text}"
 
@@ -83,13 +80,8 @@ def ask(request: QueryRequest):
     user_message = request.user_message
     if not user_message:
         raise HTTPException(status_code=400, detail="Message cannot be empty.")
-    
-    response = get_huggingface_response(user_message)
-    return {"answer": response}
+    return {"answer": get_chat_response(user_message)}
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=PORT)
-
-
-
